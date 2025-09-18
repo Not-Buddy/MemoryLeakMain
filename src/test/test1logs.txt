@@ -1,0 +1,88 @@
+=== Memory Leak Testing Setup ===
+Test file: combined_sched.c
+
+Checking required files...
+✓ memory_leak_detector.c found
+✓ memory_leak_detector_proper.h found
+
+Step 1: Preparing source file with correct headers...
+
+Step 2: Compiling memory leak detector...
+✓ Memory leak detector compiled
+
+Step 3: Compiling combined_sched.c...
+✓ Test file compiled
+
+Step 4: Linking...
+✓ Linking successful
+
+Creating test taskset file...
+✓ Created test_taskset.txt
+
+Step 5: Running memory leak test...
+===========================================
+=== Scheduler Program with Memory Leak Detection ===
+Memory leak detector initialized
+=== Memory Leak Detection Started ===
+
+=== TASK SET ===
+Task ID | Arrival | Period | Execution | Deadline
+--------|---------|--------|-----------|----------
+      0 |       0 |     10 |         3 |       10
+      1 |       0 |     15 |         4 |       15
+      2 |       0 |     20 |         2 |       20
+
+CPU Utilization: 0.67
+EDF Schedulable: YES
+
+=== RATE MONOTONIC SCHEDULER ===
+Hyperperiod: 60
+
+Job 0 (Task 0) completed at time 3
+Job 1000 (Task 1) completed at time 7
+Job 2000 (Task 2) completed at time 9
+Job 1 (Task 0) completed at time 13
+Job 1001 (Task 1) completed at time 19
+Job 2 (Task 0) completed at time 23
+Job 2001 (Task 2) completed at time 25
+Job 3 (Task 0) completed at time 33
+Job 1002 (Task 1) completed at time 37
+Job 4 (Task 0) completed at time 43
+Job 2002 (Task 2) completed at time 45
+Job 1003 (Task 1) completed at time 49
+Job 5 (Task 0) completed at time 53
+
+=== EARLIEST DEADLINE FIRST SCHEDULER ===
+Hyperperiod: 60
+
+Job 0 (Task 0) completed at time 3
+Job 1000 (Task 1) completed at time 7
+Job 2000 (Task 2) completed at time 9
+Job 1 (Task 0) completed at time 13
+Job 1001 (Task 1) completed at time 19
+Job 2 (Task 0) completed at time 23
+Job 2001 (Task 2) completed at time 25
+Job 3 (Task 0) completed at time 33
+Job 1002 (Task 1) completed at time 37
+Job 4 (Task 0) completed at time 43
+Job 2002 (Task 2) completed at time 45
+Job 1003 (Task 1) completed at time 49
+Job 5 (Task 0) completed at time 53
+
+=== Program execution completed ===
+=== Checking for Memory Leaks ===
+
+=== MEMORY LEAK DETECTION RESULTS ===
+✓ NO MEMORY LEAKS DETECTED!
+All allocated memory was properly freed.
+
+Total allocations made: 0
+==========================================
+=== Memory Leak Detection Completed ===
+
+===========================================
+Cleaning up...
+
+✓ Test completed successfully!
+Executable saved as: combined_sched_test
+
